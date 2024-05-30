@@ -78,6 +78,7 @@
             this.cmb_originalImageSizeMode.Name = "cmb_originalImageSizeMode";
             this.cmb_originalImageSizeMode.Size = new System.Drawing.Size(239, 23);
             this.cmb_originalImageSizeMode.TabIndex = 3;
+            this.cmb_originalImageSizeMode.SelectedIndexChanged += new System.EventHandler(this.cmb_originalImageSizeMode_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -103,6 +104,7 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GEnZ";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

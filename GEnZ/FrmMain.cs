@@ -20,7 +20,10 @@ namespace GEnZ
 
             m_Context = new Context();
         }
-
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            cmb_originalImageSizeMode.SelectedIndex = 1;
+        }
         private void btn_loadOriginalImage_Click(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog();
@@ -39,6 +42,17 @@ namespace GEnZ
                     pic_originalImage.Image = m_Context.OriginalPictureImg;
                 }
             }
+        }
+
+        private void cmb_originalImageSizeMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String mode = cmb_originalImageSizeMode.Text;
+            var items = Enum.GetNames(typeof(PictureBoxSizeMode)).ToList();
+            var index = items.IndexOf(mode);
+            if (index == 2)
+                return;
+
+            pic_originalImage.SizeMode = (PictureBoxSizeMode)index;
         }
     }
 }

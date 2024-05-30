@@ -18,6 +18,8 @@ namespace GEnZ.GEnZ
             {
                 OriginalPictureBmp.Dispose();
                 OriginalPictureImg.Dispose();
+
+                IsInitiated = false;
             }
         }
     }
