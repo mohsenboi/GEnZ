@@ -1,0 +1,44 @@
+﻿using GEnZ.GEnZ;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GEnZ
+{
+    public partial class FrmMain : Form
+    {
+        private Context m_Context;
+        public FrmMain()
+        {
+            InitializeComponent();
+
+            m_Context = new Context();
+        }
+
+        private void btn_loadOriginalImage_Click(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "Image files|*.png;*jpg;*jpeg";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                if (File.Exists(dialog.FileName))
+                {
+                    m_Context.ClearContext();
+                    m_Context.IsInitiated = true;
+
+                    m_Context.OriginalPictureImg = Image.FromFile(dialog.FileName);
+                    m_Context.OriginalPictureBmp = new Bitmap(m_Context.OriginalPictureImg);
+
+                    pic_originalImage.Image = m_Context.OriginalPictureImg;
+                }
+            }
+        }
+    }
+}
