@@ -33,7 +33,12 @@
             this.txt_origianlImagePath = new System.Windows.Forms.TextBox();
             this.cmb_originalImageSizeMode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_geneticAlgorithmSettings = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_populationSize = new System.Windows.Forms.Label();
+            this.lbl_mutationRate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pic_originalImage
@@ -89,11 +94,51 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Size mode: ";
             // 
+            // btn_geneticAlgorithmSettings
+            // 
+            this.btn_geneticAlgorithmSettings.Location = new System.Drawing.Point(384, 12);
+            this.btn_geneticAlgorithmSettings.Name = "btn_geneticAlgorithmSettings";
+            this.btn_geneticAlgorithmSettings.Size = new System.Drawing.Size(236, 23);
+            this.btn_geneticAlgorithmSettings.TabIndex = 5;
+            this.btn_geneticAlgorithmSettings.Text = "Genetic Settings";
+            this.btn_geneticAlgorithmSettings.UseVisualStyleBackColor = true;
+            this.btn_geneticAlgorithmSettings.Click += new System.EventHandler(this.btn_geneticAlgorithmSettings_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbl_mutationRate);
+            this.groupBox1.Controls.Add(this.lbl_populationSize);
+            this.groupBox1.Location = new System.Drawing.Point(384, 39);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(236, 303);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            // 
+            // lbl_populationSize
+            // 
+            this.lbl_populationSize.AutoSize = true;
+            this.lbl_populationSize.Location = new System.Drawing.Point(6, 19);
+            this.lbl_populationSize.Name = "lbl_populationSize";
+            this.lbl_populationSize.Size = new System.Drawing.Size(100, 15);
+            this.lbl_populationSize.TabIndex = 0;
+            this.lbl_populationSize.Text = "Population Size: 0";
+            // 
+            // lbl_mutationRate
+            // 
+            this.lbl_mutationRate.AutoSize = true;
+            this.lbl_mutationRate.Location = new System.Drawing.Point(6, 50);
+            this.lbl_mutationRate.Name = "lbl_mutationRate";
+            this.lbl_mutationRate.Size = new System.Drawing.Size(103, 15);
+            this.lbl_mutationRate.TabIndex = 1;
+            this.lbl_mutationRate.Text = "Mutation Rate: 0.0";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(860, 564);
+            this.ClientSize = new System.Drawing.Size(649, 358);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_geneticAlgorithmSettings);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_originalImageSizeMode);
             this.Controls.Add(this.txt_origianlImagePath);
@@ -106,6 +151,8 @@
             this.Text = "GEnZ";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +165,9 @@
         private TextBox txt_origianlImagePath;
         private ComboBox cmb_originalImageSizeMode;
         private Label label1;
+        private Button btn_geneticAlgorithmSettings;
+        private GroupBox groupBox1;
+        private Label lbl_populationSize;
+        private Label lbl_mutationRate;
     }
 }

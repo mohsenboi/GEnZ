@@ -13,12 +13,12 @@ namespace GEnZ
 {
     public partial class FrmMain : Form
     {
-        private Context m_Context;
+        private GEnZContext m_Context;
         public FrmMain()
         {
             InitializeComponent();
 
-            m_Context = new Context();
+            m_Context = new GEnZContext();
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -53,6 +53,21 @@ namespace GEnZ
                 return;
 
             pic_originalImage.SizeMode = (PictureBoxSizeMode)index;
+        }
+
+        private void btn_geneticAlgorithmSettings_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmGeneticAlgorithmSettings();
+            frm.OnMutationRateChanged += (sender, args) =>
+            {
+                lbl_mutationRate.Text = $"Mutation Rate: {args}";
+            };
+            frm.OnPopulationSizeChanged += (sender, args) =>
+            {
+                lbl_populationSize.Text = $"Population Size: {args}";
+            };
+
+            frm.Show();
         }
     }
 }
