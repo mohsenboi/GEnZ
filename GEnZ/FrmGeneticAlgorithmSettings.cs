@@ -14,6 +14,7 @@ namespace GEnZ
     {
         public EventHandler<int> OnPopulationSizeChanged;
         public EventHandler<double> OnMutationRateChanged;
+        public EventHandler<int> OnGenerationsChanged;
 
         public FrmGeneticAlgorithmSettings()
         {
@@ -27,6 +28,7 @@ namespace GEnZ
             {
                 OnMutationRateChanged?.Invoke(this, mutationRate);
             }
+            OnGenerationsChanged?.Invoke(this, (int)num_generations.Value);
         }
     }
 }

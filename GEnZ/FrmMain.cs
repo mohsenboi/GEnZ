@@ -1,4 +1,5 @@
 ﻿using GEnZ.GEnZ;
+using GEnZ.GEnZ.GenticAlgorithm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,13 @@ namespace GEnZ
 {
     public partial class FrmMain : Form
     {
-        private GEnZContext m_Context;
+        public static GEnZContext? Context;
+        public GeneticContext GeneticContext;
         public FrmMain()
         {
             InitializeComponent();
 
-            m_Context = new GEnZContext();
+            Context = new GEnZContext();
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -33,13 +35,13 @@ namespace GEnZ
             {
                 if (File.Exists(dialog.FileName))
                 {
-                    m_Context.ClearContext();
-                    m_Context.IsInitiated = true;
+                    Context.ClearContext();
+                    Context.IsInitiated = true;
 
-                    m_Context.OriginalPictureImg = Image.FromFile(dialog.FileName);
-                    m_Context.OriginalPictureBmp = new Bitmap(m_Context.OriginalPictureImg);
+                    Context.OriginalPictureImg = Image.FromFile(dialog.FileName);
+                    Context.OriginalPictureBmp = new Bitmap(Context.OriginalPictureImg);
 
-                    pic_originalImage.Image = m_Context.OriginalPictureImg;
+                    pic_originalImage.Image = Context.OriginalPictureImg;
                 }
             }
         }
@@ -57,17 +59,50 @@ namespace GEnZ
 
         private void btn_geneticAlgorithmSettings_Click(object sender, EventArgs e)
         {
+            GeneticContext = new GeneticContext(50, 0, 100, 5, 0);
+            FrmMain.Context.GeneticContext = GeneticContext;
+            GeneticContext.PopulationSize = 50;
+
+
             var frm = new FrmGeneticAlgorithmSettings();
             frm.OnMutationRateChanged += (sender, args) =>
             {
                 lbl_mutationRate.Text = $"Mutation Rate: {args}";
+                GeneticContext.MutationRate = args;
             };
             frm.OnPopulationSizeChanged += (sender, args) =>
             {
                 lbl_populationSize.Text = $"Population Size: {args}";
+                GeneticContext.PopulationSize = args;
+            };
+            frm.OnGenerationsChanged += (sender, args) =>
+            {
+                lbl_generations.Text = $"Generations: {args}";
+                GeneticContext.Generations = args;
             };
 
             frm.Show();
+        }
+
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            Context.GeneticContext = GeneticContext;
+            Thread t = new Thread(() =>
+            {
+                for (int i = 0; i < Context.GeneticContext.Generations; i++)
+                {
+                    Context.GeneticContext.Forward();
+                    var ind = Context.GeneticContext.GetFittest();
+
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        pic_geneticImage.Image = ind.PictureOfIndividual;
+                        lbl_currentFitness.Text = $"Current Fitness: {ind.Fitness}";
+                    }));
+                }
+            });
+            t.Start();
+            
         }
     }
 }

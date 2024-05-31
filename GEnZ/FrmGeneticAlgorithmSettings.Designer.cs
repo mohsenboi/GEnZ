@@ -33,8 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_mutationRate = new System.Windows.Forms.TextBox();
             this.pic_confirm = new System.Windows.Forms.PictureBox();
+            this.num_generations = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_populationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_confirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_generations)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,11 +97,45 @@
             this.pic_confirm.TabStop = false;
             this.pic_confirm.Click += new System.EventHandler(this.pic_confirm_Click);
             // 
+            // num_generations
+            // 
+            this.num_generations.Location = new System.Drawing.Point(197, 114);
+            this.num_generations.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.num_generations.Minimum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.num_generations.Name = "num_generations";
+            this.num_generations.Size = new System.Drawing.Size(120, 23);
+            this.num_generations.TabIndex = 6;
+            this.num_generations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.num_generations.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(97, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Generations: ";
+            // 
             // FrmGeneticAlgorithmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 256);
+            this.Controls.Add(this.num_generations);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pic_confirm);
             this.Controls.Add(this.txt_mutationRate);
             this.Controls.Add(this.label2);
@@ -112,6 +149,7 @@
             this.Text = "Genetic Algorithm Settings";
             ((System.ComponentModel.ISupportInitialize)(this.num_populationSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_confirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_generations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +162,7 @@
         private Label label2;
         private TextBox txt_mutationRate;
         private PictureBox pic_confirm;
+        private NumericUpDown num_generations;
+        private Label label3;
     }
 }

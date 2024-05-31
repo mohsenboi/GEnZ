@@ -35,10 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_geneticAlgorithmSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbl_populationSize = new System.Windows.Forms.Label();
+            this.lbl_generations = new System.Windows.Forms.Label();
             this.lbl_mutationRate = new System.Windows.Forms.Label();
+            this.lbl_populationSize = new System.Windows.Forms.Label();
+            this.btn_start = new System.Windows.Forms.Button();
+            this.pic_geneticImage = new System.Windows.Forms.PictureBox();
+            this.lbl_currentFitness = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_geneticImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pic_originalImage
@@ -106,6 +111,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_generations);
             this.groupBox1.Controls.Add(this.lbl_mutationRate);
             this.groupBox1.Controls.Add(this.lbl_populationSize);
             this.groupBox1.Location = new System.Drawing.Point(384, 39);
@@ -114,14 +120,14 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // lbl_populationSize
+            // lbl_generations
             // 
-            this.lbl_populationSize.AutoSize = true;
-            this.lbl_populationSize.Location = new System.Drawing.Point(6, 19);
-            this.lbl_populationSize.Name = "lbl_populationSize";
-            this.lbl_populationSize.Size = new System.Drawing.Size(100, 15);
-            this.lbl_populationSize.TabIndex = 0;
-            this.lbl_populationSize.Text = "Population Size: 0";
+            this.lbl_generations.AutoSize = true;
+            this.lbl_generations.Location = new System.Drawing.Point(6, 81);
+            this.lbl_generations.Name = "lbl_generations";
+            this.lbl_generations.Size = new System.Drawing.Size(82, 15);
+            this.lbl_generations.TabIndex = 2;
+            this.lbl_generations.Text = "Generations: 0";
             // 
             // lbl_mutationRate
             // 
@@ -132,11 +138,52 @@
             this.lbl_mutationRate.TabIndex = 1;
             this.lbl_mutationRate.Text = "Mutation Rate: 0.0";
             // 
+            // lbl_populationSize
+            // 
+            this.lbl_populationSize.AutoSize = true;
+            this.lbl_populationSize.Location = new System.Drawing.Point(6, 19);
+            this.lbl_populationSize.Name = "lbl_populationSize";
+            this.lbl_populationSize.Size = new System.Drawing.Size(100, 15);
+            this.lbl_populationSize.TabIndex = 0;
+            this.lbl_populationSize.Text = "Population Size: 0";
+            // 
+            // btn_start
+            // 
+            this.btn_start.Location = new System.Drawing.Point(545, 358);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(75, 23);
+            this.btn_start.TabIndex = 7;
+            this.btn_start.Text = "Start";
+            this.btn_start.UseVisualStyleBackColor = true;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            // 
+            // pic_geneticImage
+            // 
+            this.pic_geneticImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pic_geneticImage.Location = new System.Drawing.Point(12, 358);
+            this.pic_geneticImage.Name = "pic_geneticImage";
+            this.pic_geneticImage.Size = new System.Drawing.Size(312, 279);
+            this.pic_geneticImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_geneticImage.TabIndex = 8;
+            this.pic_geneticImage.TabStop = false;
+            // 
+            // lbl_currentFitness
+            // 
+            this.lbl_currentFitness.AutoSize = true;
+            this.lbl_currentFitness.Location = new System.Drawing.Point(330, 622);
+            this.lbl_currentFitness.Name = "lbl_currentFitness";
+            this.lbl_currentFitness.Size = new System.Drawing.Size(98, 15);
+            this.lbl_currentFitness.TabIndex = 9;
+            this.lbl_currentFitness.Text = "Current Fitness: 0";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 358);
+            this.ClientSize = new System.Drawing.Size(649, 649);
+            this.Controls.Add(this.lbl_currentFitness);
+            this.Controls.Add(this.pic_geneticImage);
+            this.Controls.Add(this.btn_start);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_geneticAlgorithmSettings);
             this.Controls.Add(this.label1);
@@ -153,6 +200,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_geneticImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +217,9 @@
         private GroupBox groupBox1;
         private Label lbl_populationSize;
         private Label lbl_mutationRate;
+        private Button btn_start;
+        private Label lbl_generations;
+        private PictureBox pic_geneticImage;
+        private Label lbl_currentFitness;
     }
 }
