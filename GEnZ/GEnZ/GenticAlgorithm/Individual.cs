@@ -14,6 +14,7 @@ namespace GEnZ.GEnZ.GenticAlgorithm
 
         public Individual()
         {
+            Genome = new List<Gene>();
             for (int i = 0; i < FrmMain.Context.GeneticContext.GenomeLength; i++)
             {
                 Genome.Add(new Gene());
@@ -40,7 +41,7 @@ namespace GEnZ.GEnZ.GenticAlgorithm
 
         private void Mutation()
         {
-            for (int i = 0; i < Genome.Count; i++)
+            for (int i = 0; i < FrmMain.Context.GeneticContext.GenomeLength; i++)
             {
                 if (GEnZContext.RandomFloat() < FrmMain.Context.GeneticContext.MutationRate)
                 {

@@ -15,6 +15,8 @@ namespace GEnZ
         public EventHandler<int> OnPopulationSizeChanged;
         public EventHandler<double> OnMutationRateChanged;
         public EventHandler<int> OnGenerationsChanged;
+        public EventHandler<int> OnMaximumShapesChanged;
+        public EventHandler<int> OnMaximumShapeComplexityChanged;
 
         public FrmGeneticAlgorithmSettings()
         {
@@ -29,6 +31,8 @@ namespace GEnZ
                 OnMutationRateChanged?.Invoke(this, mutationRate);
             }
             OnGenerationsChanged?.Invoke(this, (int)num_generations.Value);
+            OnMaximumShapesChanged?.Invoke(this, (int)num_maximumShapesChanged.Value);
+            OnMaximumShapeComplexityChanged?.Invoke(this, (int)num_maximumShapeComplexity.Value);
         }
     }
 }

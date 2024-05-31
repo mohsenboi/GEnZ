@@ -35,12 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_geneticAlgorithmSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_maximumShapeColplexity = new System.Windows.Forms.Label();
+            this.lbl_maximumShapes = new System.Windows.Forms.Label();
             this.lbl_generations = new System.Windows.Forms.Label();
             this.lbl_mutationRate = new System.Windows.Forms.Label();
             this.lbl_populationSize = new System.Windows.Forms.Label();
             this.btn_start = new System.Windows.Forms.Button();
             this.pic_geneticImage = new System.Windows.Forms.PictureBox();
             this.lbl_currentFitness = new System.Windows.Forms.Label();
+            this.lbl_currentGeneration = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_geneticImage)).BeginInit();
@@ -111,6 +114,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_maximumShapeColplexity);
+            this.groupBox1.Controls.Add(this.lbl_maximumShapes);
             this.groupBox1.Controls.Add(this.lbl_generations);
             this.groupBox1.Controls.Add(this.lbl_mutationRate);
             this.groupBox1.Controls.Add(this.lbl_populationSize);
@@ -119,6 +124,24 @@
             this.groupBox1.Size = new System.Drawing.Size(236, 303);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // lbl_maximumShapeColplexity
+            // 
+            this.lbl_maximumShapeColplexity.AutoSize = true;
+            this.lbl_maximumShapeColplexity.Location = new System.Drawing.Point(6, 140);
+            this.lbl_maximumShapeColplexity.Name = "lbl_maximumShapeColplexity";
+            this.lbl_maximumShapeColplexity.Size = new System.Drawing.Size(165, 15);
+            this.lbl_maximumShapeColplexity.TabIndex = 4;
+            this.lbl_maximumShapeColplexity.Text = "Maximum Shape Colplexity: 0";
+            // 
+            // lbl_maximumShapes
+            // 
+            this.lbl_maximumShapes.AutoSize = true;
+            this.lbl_maximumShapes.Location = new System.Drawing.Point(6, 110);
+            this.lbl_maximumShapes.Name = "lbl_maximumShapes";
+            this.lbl_maximumShapes.Size = new System.Drawing.Size(114, 15);
+            this.lbl_maximumShapes.TabIndex = 3;
+            this.lbl_maximumShapes.Text = "Maximum Shapes: 0";
             // 
             // lbl_generations
             // 
@@ -176,11 +199,21 @@
             this.lbl_currentFitness.TabIndex = 9;
             this.lbl_currentFitness.Text = "Current Fitness: 0";
             // 
+            // lbl_currentGeneration
+            // 
+            this.lbl_currentGeneration.AutoSize = true;
+            this.lbl_currentGeneration.Location = new System.Drawing.Point(330, 592);
+            this.lbl_currentGeneration.Name = "lbl_currentGeneration";
+            this.lbl_currentGeneration.Size = new System.Drawing.Size(120, 15);
+            this.lbl_currentGeneration.TabIndex = 10;
+            this.lbl_currentGeneration.Text = "Current Generation: 0";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 649);
+            this.Controls.Add(this.lbl_currentGeneration);
             this.Controls.Add(this.lbl_currentFitness);
             this.Controls.Add(this.pic_geneticImage);
             this.Controls.Add(this.btn_start);
@@ -221,5 +254,8 @@
         private Label lbl_generations;
         private PictureBox pic_geneticImage;
         private Label lbl_currentFitness;
+        private Label lbl_maximumShapes;
+        private Label lbl_maximumShapeColplexity;
+        private Label lbl_currentGeneration;
     }
 }

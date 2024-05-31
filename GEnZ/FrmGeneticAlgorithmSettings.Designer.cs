@@ -35,9 +35,15 @@
             this.pic_confirm = new System.Windows.Forms.PictureBox();
             this.num_generations = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
+            this.num_maximumShapesChanged = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.num_maximumShapeComplexity = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_populationSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_confirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_generations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_maximumShapesChanged)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_maximumShapeComplexity)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +95,7 @@
             // 
             this.pic_confirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic_confirm.Image = global::GEnZ.Properties.Resources._1;
-            this.pic_confirm.Location = new System.Drawing.Point(197, 203);
+            this.pic_confirm.Location = new System.Drawing.Point(197, 251);
             this.pic_confirm.Name = "pic_confirm";
             this.pic_confirm.Size = new System.Drawing.Size(47, 41);
             this.pic_confirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -129,11 +135,79 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Generations: ";
             // 
+            // num_maximumShapesChanged
+            // 
+            this.num_maximumShapesChanged.Location = new System.Drawing.Point(197, 157);
+            this.num_maximumShapesChanged.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.num_maximumShapesChanged.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.num_maximumShapesChanged.Name = "num_maximumShapesChanged";
+            this.num_maximumShapesChanged.Size = new System.Drawing.Size(120, 23);
+            this.num_maximumShapesChanged.TabIndex = 8;
+            this.num_maximumShapesChanged.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.num_maximumShapesChanged.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(83, 159);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Maximum Shapes: ";
+            // 
+            // num_maximumShapeComplexity
+            // 
+            this.num_maximumShapeComplexity.Location = new System.Drawing.Point(197, 198);
+            this.num_maximumShapeComplexity.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.num_maximumShapeComplexity.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.num_maximumShapeComplexity.Name = "num_maximumShapeComplexity";
+            this.num_maximumShapeComplexity.Size = new System.Drawing.Size(120, 23);
+            this.num_maximumShapeComplexity.TabIndex = 10;
+            this.num_maximumShapeComplexity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.num_maximumShapeComplexity.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Maximum Shape Complexity: ";
+            // 
             // FrmGeneticAlgorithmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 256);
+            this.ClientSize = new System.Drawing.Size(449, 318);
+            this.Controls.Add(this.num_maximumShapeComplexity);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.num_maximumShapesChanged);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.num_generations);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pic_confirm);
@@ -150,6 +224,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_populationSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_confirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_generations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_maximumShapesChanged)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_maximumShapeComplexity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +240,9 @@
         private PictureBox pic_confirm;
         private NumericUpDown num_generations;
         private Label label3;
+        private NumericUpDown num_maximumShapesChanged;
+        private Label label4;
+        private NumericUpDown num_maximumShapeComplexity;
+        private Label label5;
     }
 }

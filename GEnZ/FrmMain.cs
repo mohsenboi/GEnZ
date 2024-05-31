@@ -16,6 +16,13 @@ namespace GEnZ
     {
         public static GEnZContext? Context;
         public GeneticContext GeneticContext;
+
+        double m_mutationRate = 0;
+        int m_populationSize = 0;
+        int m_generations = 0;
+        int m_genomeLength = 0;
+        int m_maxVertices = 0;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -35,6 +42,7 @@ namespace GEnZ
             {
                 if (File.Exists(dialog.FileName))
                 {
+                    txt_origianlImagePath.Text = dialog.FileName;
                     Context.ClearContext();
                     Context.IsInitiated = true;
 
@@ -59,26 +67,33 @@ namespace GEnZ
 
         private void btn_geneticAlgorithmSettings_Click(object sender, EventArgs e)
         {
-            GeneticContext = new GeneticContext(50, 0, 100, 5, 0);
-            FrmMain.Context.GeneticContext = GeneticContext;
-            GeneticContext.PopulationSize = 50;
 
 
             var frm = new FrmGeneticAlgorithmSettings();
             frm.OnMutationRateChanged += (sender, args) =>
             {
                 lbl_mutationRate.Text = $"Mutation Rate: {args}";
-                GeneticContext.MutationRate = args;
+                m_mutationRate = args;
             };
             frm.OnPopulationSizeChanged += (sender, args) =>
             {
                 lbl_populationSize.Text = $"Population Size: {args}";
-                GeneticContext.PopulationSize = args;
+                m_populationSize = args;
             };
             frm.OnGenerationsChanged += (sender, args) =>
             {
                 lbl_generations.Text = $"Generations: {args}";
-                GeneticContext.Generations = args;
+                m_generations = args;
+            };
+            frm.OnMaximumShapesChanged += (sender, args) =>
+            {
+                lbl_maximumShapes.Text = $"Maximum Shapes: {args}";
+                m_genomeLength = args;
+            };
+            frm.OnMaximumShapeComplexityChanged += (sender, args) =>
+            {
+                lbl_maximumShapeColplexity.Text = $"Maximum Shape Colplexity: {args}";
+                m_maxVertices = args;
             };
 
             frm.Show();
@@ -86,7 +101,17 @@ namespace GEnZ
 
         private void btn_start_Click(object sender, EventArgs e)
         {
+            GeneticContext = new GeneticContext
+                (
+                    m_populationSize, 
+                    m_mutationRate, 
+                    m_genomeLength, 
+                    m_maxVertices, 
+                    m_generations
+                );
             Context.GeneticContext = GeneticContext;
+            GeneticContext.PopulationSize = m_populationSize;
+
             Thread t = new Thread(() =>
             {
                 for (int i = 0; i < Context.GeneticContext.Generations; i++)
@@ -98,6 +123,7 @@ namespace GEnZ
                     {
                         pic_geneticImage.Image = ind.PictureOfIndividual;
                         lbl_currentFitness.Text = $"Current Fitness: {ind.Fitness}";
+                        lbl_currentGeneration.Text = $"Current Generation: {i}";
                     }));
                 }
             });
