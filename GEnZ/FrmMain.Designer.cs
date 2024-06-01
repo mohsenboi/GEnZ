@@ -44,6 +44,7 @@
             this.pic_geneticImage = new System.Windows.Forms.PictureBox();
             this.lbl_currentFitness = new System.Windows.Forms.Label();
             this.lbl_currentGeneration = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic_originalImage)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_geneticImage)).BeginInit();
@@ -208,11 +209,22 @@
             this.lbl_currentGeneration.TabIndex = 10;
             this.lbl_currentGeneration.Text = "Current Generation: 0";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(471, 446);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Compare";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 649);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_currentGeneration);
             this.Controls.Add(this.lbl_currentFitness);
             this.Controls.Add(this.pic_geneticImage);
@@ -257,5 +269,6 @@
         private Label lbl_maximumShapes;
         private Label lbl_maximumShapeColplexity;
         private Label lbl_currentGeneration;
+        private Button button1;
     }
 }

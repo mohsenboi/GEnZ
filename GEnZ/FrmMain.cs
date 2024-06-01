@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace GEnZ
     public partial class FrmMain : Form
     {
         public static GEnZContext? Context;
+        public static ImageCompartion IC;
         public GeneticContext GeneticContext;
 
         double m_mutationRate = 0;
@@ -28,6 +30,7 @@ namespace GEnZ
             InitializeComponent();
 
             Context = new GEnZContext();
+            IC = new ImageCompartion();
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -112,6 +115,8 @@ namespace GEnZ
             Context.GeneticContext = GeneticContext;
             GeneticContext.PopulationSize = m_populationSize;
 
+            
+
             Thread t = new Thread(() =>
             {
                 for (int i = 0; i < Context.GeneticContext.Generations; i++)
@@ -129,6 +134,11 @@ namespace GEnZ
             });
             t.Start();
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
