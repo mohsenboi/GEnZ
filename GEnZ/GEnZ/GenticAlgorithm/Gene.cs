@@ -16,21 +16,21 @@ namespace GEnZ.GEnZ.GenticAlgorithm
         public int B { get; set; }
         public int A { get; set; }
 
-        public Gene()
+        public Gene(GEnZContext context)
         {
-            n_vertices = GEnZContext.RandomInt(3, FrmMain.Context.GeneticContext.MaxVertices);
+            n_vertices = GEnZContext.RandomInt(3, context.GeneticContext.MaxVertices);
             vertices = new List<Point>();
 
-            R = GEnZContext.RandomInt(0, 255);
-            G = GEnZContext.RandomInt(0, 255);
-            B = GEnZContext.RandomInt(0, 255);
+            R = GEnZContext.RandomInt(context.ColorRanges[0].X, context.ColorRanges[0].Y);
+            G = GEnZContext.RandomInt(context.ColorRanges[1].X, context.ColorRanges[1].Y);
+            B = GEnZContext.RandomInt(context.ColorRanges[2].X, context.ColorRanges[2].Y);
             A = GEnZContext.RandomInt(0, 255);
 
             for (int i = 0; i < n_vertices; i++)
             {
                 var vertex = new Point(
-                    GEnZContext.RandomInt(-10, FrmMain.Context.OriginalPictureImg.Width + 10), 
-                    GEnZContext.RandomInt(-10, FrmMain.Context.OriginalPictureImg.Height + 10)
+                    GEnZContext.RandomInt(-10, context.OriginalPictureImg.Width + 10), 
+                    GEnZContext.RandomInt(-10, context.OriginalPictureImg.Height + 10)
                 );
                 vertices.Add(vertex);
             }

@@ -13,6 +13,7 @@ namespace GEnZ.GEnZ
         public Image? OriginalPictureImg { get; set; }
         public Bitmap? OriginalPictureBmp { get; set; }
         public GeneticContext? GeneticContext { get; set; }
+        public Point[] ColorRanges { get; set; }
 
         private static Random Rnd { get; set; } = new Random();
 

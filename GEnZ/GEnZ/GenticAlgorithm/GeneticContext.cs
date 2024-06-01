@@ -29,12 +29,16 @@ namespace GEnZ.GEnZ.GenticAlgorithm
 
         public List<Individual> Individuals { get; private set; }
 
-        public GeneticContext(int populationSize,
+        public GEnZContext Context { get; set; }
+
+        public GeneticContext(GEnZContext context,
+                                                    int populationSize,
                                                     double mutationRate,
                                                     int genomeLength,
                                                     int maxVertices,
                                                     int generations)
         {
+            this.Context = context;
             this.MutationRate = mutationRate;
             this.GenomeLength = genomeLength;
             this.MaxVertices = maxVertices;
@@ -51,7 +55,7 @@ namespace GEnZ.GEnZ.GenticAlgorithm
             Individuals = new List<Individual>();
             for (int i = 0; i < PopulationSize; i++)
             {
-                Individuals.Add(new Individual());
+                Individuals.Add(new Individual(Context));
             }
         }
         public void SortPopulation()
@@ -66,7 +70,7 @@ namespace GEnZ.GEnZ.GenticAlgorithm
             {
                 var parent1 = Individuals[GEnZContext.RandomInt(0, selectionCount)];
                 var parent2 = Individuals[GEnZContext.RandomInt(0, selectionCount)];
-                Individuals[i] = new Individual(parent1, parent2);
+                Individuals[i] = new Individual(Context, parent1, parent2);
             }
             SortPopulation();
             // Sort by fitness

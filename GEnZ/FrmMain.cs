@@ -15,7 +15,7 @@ namespace GEnZ
 {
     public partial class FrmMain : Form
     {
-        public static GEnZContext? Context;
+        public GEnZContext? Context;
         public static ImageCompartion IC;
         public GeneticContext GeneticContext;
 
@@ -51,6 +51,7 @@ namespace GEnZ
 
                     Context.OriginalPictureImg = Image.FromFile(dialog.FileName);
                     Context.OriginalPictureBmp = new Bitmap(Context.OriginalPictureImg);
+                    Context.ColorRanges = CalculateColorRange(Context.OriginalPictureBmp);
 
                     pic_originalImage.Image = Context.OriginalPictureImg;
                 }
@@ -70,8 +71,6 @@ namespace GEnZ
 
         private void btn_geneticAlgorithmSettings_Click(object sender, EventArgs e)
         {
-
-
             var frm = new FrmGeneticAlgorithmSettings();
             frm.OnMutationRateChanged += (sender, args) =>
             {
@@ -106,6 +105,7 @@ namespace GEnZ
         {
             GeneticContext = new GeneticContext
                 (
+                    Context,
                     m_populationSize, 
                     m_mutationRate, 
                     m_genomeLength, 
@@ -135,7 +135,36 @@ namespace GEnZ
             t.Start();
             
         }
+        private Point[] CalculateColorRange(Bitmap bitmap)
+        {
+            // Initialize min and max values for RGB
+            int minRed = 255, maxRed = 0;
+            int minGreen = 255, maxGreen = 0;
+            int minBlue = 255, maxBlue = 0;
 
+            // Iterate through each pixel in the image
+            for (int y = 0; y < bitmap.Height; y++)
+            {
+                for (int x = 0; x < bitmap.Width; x++)
+                {
+                    Color pixelColor = bitmap.GetPixel(x, y);
+
+                    // Update min and max values for red
+                    if (pixelColor.R < minRed) minRed = pixelColor.R;
+                    if (pixelColor.R > maxRed) maxRed = pixelColor.R;
+
+                    // Update min and max values for green
+                    if (pixelColor.G < minGreen) minGreen = pixelColor.G;
+                    if (pixelColor.G > maxGreen) maxGreen = pixelColor.G;
+
+                    // Update min and max values for blue
+                    if (pixelColor.B < minBlue) minBlue = pixelColor.B;
+                    if (pixelColor.B > maxBlue) maxBlue = pixelColor.B;
+                }
+            }
+
+            return new Point[] { new Point(minRed, maxRed), new Point(minGreen, maxGreen), new Point(minBlue, maxBlue) };
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 

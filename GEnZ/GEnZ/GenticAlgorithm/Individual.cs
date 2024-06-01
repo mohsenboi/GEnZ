@@ -12,18 +12,26 @@ namespace GEnZ.GEnZ.GenticAlgorithm
         public List<Gene>? Genome { get; private set; } = new List<Gene>();
         public Bitmap PictureOfIndividual { get; set; }
         public double Fitness { get; set; }
+        private GeneticContext GenticContext { get; set; }
+        public GEnZContext Context { get; set; }
 
-        public Individual()
+        public Individual(GEnZContext context)
         {
+            this.Context = context;
+            this.GenticContext = context.GeneticContext;
+
             Genome = new List<Gene>();
-            for (int i = 0; i < FrmMain.Context.GeneticContext.GenomeLength; i++)
+            for (int i = 0; i < this.GenticContext.GenomeLength; i++)
             {
-                Genome.Add(new Gene());
+                Genome.Add(new Gene(Context));
             }
         }
-        public Individual(Individual parent1, Individual parent2)
+        public Individual(GEnZContext context, Individual parent1, Individual parent2)
         {
-            for (int i = 0; i < FrmMain.Context.GeneticContext.GenomeLength; i++)
+            this.Context = context;
+            this.GenticContext = context.GeneticContext;
+
+            for (int i = 0; i < this.GenticContext.GenomeLength; i++)
             {
                 if (GEnZContext.RandomFloat() > 0.5f)
                 {
@@ -42,17 +50,17 @@ namespace GEnZ.GEnZ.GenticAlgorithm
 
         private void Mutation()
         {
-            for (int i = 0; i < FrmMain.Context.GeneticContext.GenomeLength; i++)
+            for (int i = 0; i < this.GenticContext.GenomeLength; i++)
             {
-                if (GEnZContext.RandomFloat() < FrmMain.Context.GeneticContext.MutationRate)
+                if (GEnZContext.RandomFloat() < this.GenticContext.MutationRate)
                 {
-                    Genome[i] = new Gene();
+                    Genome[i] = new Gene(Context);
                 }
             }
         }
         private Bitmap? DrawPictureOfIndividual()
         {
-            Bitmap bmp = new Bitmap(FrmMain.Context.OriginalPictureImg.Width, FrmMain.Context.OriginalPictureImg.Height);
+            Bitmap bmp = new Bitmap(Context.OriginalPictureImg.Width, Context.OriginalPictureImg.Height);
             Graphics g = Graphics.FromImage(bmp);
             for (int i = 0; i < Genome.Count; i++)
             {
@@ -65,12 +73,12 @@ namespace GEnZ.GEnZ.GenticAlgorithm
         }
         private double CalculateFitness()
         {
-            var diff = CalculateDifferenceSum(PictureOfIndividual, FrmMain.Context.OriginalPictureBmp);
+            var diff = CalculateDifferenceSum(PictureOfIndividual, Context.OriginalPictureBmp);
             //double diff = FrmMain.IC.CompareImages(PictureOfIndividual, FrmMain.Context.OriginalPictureBmp);
 
             var illness = diff / (
-                                    FrmMain.Context.OriginalPictureBmp.Width *
-                                    FrmMain.Context.OriginalPictureBmp.Height * 255 * 3
+                                    Context.OriginalPictureBmp.Width *
+                                    Context.OriginalPictureBmp.Height * 255 * 3
                                  );
             return 1 - illness;
         }
@@ -121,7 +129,7 @@ namespace GEnZ.GEnZ.GenticAlgorithm
 
             return differenceSum;
         }
-
+        
         private double CalculateDifference2(Bitmap img1, Bitmap img2)
         {
             double diff = 0;
